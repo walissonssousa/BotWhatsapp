@@ -1,6 +1,6 @@
 import time
 from selenium.webdriver.common.by import By
-import pandas as pd
+import pandas as pd 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
@@ -13,13 +13,12 @@ contatos_df = pd.read_excel("Enviar.xlsx")
 
 navegador = webdriver.Chrome()
 navegador.get("https://web.whatsapp.com/")
-time.sleep(30)
+time.sleep(10)
 
 
 for i, mensagem in enumerate(contatos_df['Mensagem']):
-    pessoa = contatos_df.loc[i,"Pessoa"]
     numero = contatos_df.loc[i,"Número"]
-    texto = urllib.parse.quote( f"oi {pessoa}! {mensagem}")
+    texto = urllib.parse.quote( f" olá! {mensagem}")
     link = f"https://web.whatsapp.com/send?phone={numero}&text={texto}"
     navegador.get(link)
     time.sleep(5)
